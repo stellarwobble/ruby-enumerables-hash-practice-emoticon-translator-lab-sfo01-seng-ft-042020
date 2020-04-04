@@ -12,22 +12,17 @@ hash
 end
 
 def get_japanese_emoticon(file = "./lib/emoticons.yml", english)
- emoticons = load_library(path) 
-  result = emoticons[:japanese][emoticon]
-  if result
-    result
-  else
-    "Sorry, that emoticon was not found"
+data = load_library(file)
+data.each do |emotions, symbols|
+  data[emotions].each do |symbols, japanese|
+    if data[emotions][:english] == english
+      return data[emotions][:japanese]
+    end
   end
+end
+return "Sorry, that emoticon was not found"
 end
     
 
-def get_english_meaning(path, emoticon)
- emoticons = load_library(path)
-  result = emoticons[:english][emoticon] 
-  if result
-    result
-  else
-    "Sorry, that emoticon was not found"
-  end
-end
+def get_english_meaning()
+ 
