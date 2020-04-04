@@ -6,7 +6,9 @@ def load_library(data)
 hash = {}
 files = YAML.load_file('./lib/emoticons.yml')
 files.each do |emotions, symbols|
-  hash[emotions] = {:english => symbols[0], :japanese => symbols[1]
+  hash[emotions] = {:english => symbols[0], :japanese => symbols[1]}
+end
+hash 
 end
 
 def get_japanese_emoticon(path, emoticon)
