@@ -11,7 +11,7 @@ end
 hash 
 end
 
-def get_japanese_emoticon()
+def get_japanese_emoticon(file = "./lib/emoticons.yml", english)
  emoticons = load_library(path) 
   result = emoticons[:japanese][emoticon]
   if result
