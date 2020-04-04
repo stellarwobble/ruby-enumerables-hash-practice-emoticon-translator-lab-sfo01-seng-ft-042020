@@ -4,23 +4,32 @@ require 'yaml'
 
 def load_library(path)
 emoticons = {"get_meaning" => {}, "get_emoticon" => {}}
-YAML.load
+YAML.load_file(path).each do |meaning, describe|
+  eng, jan = describe
+  emoticons["get_meaning"][jan] = meaning
+  emoticons["get_emoticon"][eng] = jan 
+end
+emoticons
 end
 
 def get_japanese_emoticon(path, emoticon)
-  hash = load_library(path)
-  if hash["get_emoticon"][emoticon] == nil 
-    return "Sorry, that emoticon was not found"
-  else return hash["get_emoticon"][emoticon]
-end
+ emoticons = load_library(path)
+ results = emoticons["get_emoticon"][emoticon]
+ if result
+   result
+ else
+   "Sorry, that emoticon was not found"
+ end
 end 
     
 
 def get_english_meaning(path, emoticon)
-  hash = load_library(path)
-  if hash["get_meaning"][emoticon] == nil 
-    return "Sorry, that emoticon was not found"
-  else return hash["get_meaning"][emoticon]
-  end
+ emoticons = load_library(path)
+ result = emoticons["get_meaning"][emoticon]
+ if result
+   result
+ else
+   "Sorry, that emoticon was not found"
+ end
 
 end
