@@ -24,5 +24,15 @@ return "Sorry, that emoticon was not found"
 end
     
 
-def get_english_meaning()
+def get_english_meaning(file = "./lib/emoticons.yml", japanese)
+  data = load_library(file)
+  data.each do |emotions, symbols|
+    data[emotions].each do |symbols, english|
+      if data[emotions][:japanese] == japanese
+        return emotions
+      end
+    end
+  end
+  return "Sorry, that emoticon was not found"
+end
  
